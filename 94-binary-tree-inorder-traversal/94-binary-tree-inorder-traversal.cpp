@@ -9,7 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution1 {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
@@ -25,4 +25,26 @@ public:
         return ans;
         
     }
+
+};
+class Solution {
+    public:
+    vector<int> inorderTraversal(TreeNode* root){
+        
+        //this time i will make sure nothing to make a duplicate and use insert function which in previous method was taking o(n^2) time complexity
+        vector<int> res;
+        fun(root,res);
+        return res;
+        
+    }
+    private:
+        void fun(TreeNode* root,vector<int> &res){
+            if(root==NULL){
+                return;
+            }
+        fun(root->left,res);
+        res.push_back(root->val);
+        fun(root->right,res);
+    }
+    
 };
